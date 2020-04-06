@@ -1,0 +1,485 @@
+\documentclass[a4paper, twocolumn]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+
+\usepackage{float}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{framed}
+
+\usepackage[german]{babel}
+
+\usepackage[margin=2cm]{geometry}
+\usepackage{xcolor}
+\usepackage{graphicx}
+
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+
+\title{An1E Zusammenfassung}
+\author{Naoki Pross}
+\date{Januar 2020}
+
+
+\newcommand{\nset}[1]{\ensuremath{\mathbb{#1}}}
+\newcommand{\heq}{\ensuremath{\stackrel{\hat{\texttt{H}}}{=}}}
+\newcommand{\noticeq}{\ensuremath{\stackrel{!}{=}}}
+\newcommand{\dd}[1]{\ensuremath{\mathrm{d}#1}}
+\newcommand{\df}[2]{\ensuremath{\frac{\dd{#1}}{\dd{#2}}}}
+
+\newcommand{\brpage}[1]{\textcolor{red!70!black}{\small\texttt{S#1}}}
+
+
+\begin{document}
+
+\section{Ungleichungen \brpage{31}}
+\begin{tabular*}{\linewidth}{l >{\(}r<{\) } @{{\(\;\leq\;\)}} >{ \(}l<{\)}}
+  Bernoulli  & 1 + na  & (1+a)^n \\
+  Binomische & |ab|    & \frac{1}{2}(a^2 + b^2) \\
+  Dreiecks   & |a + b| & |a| + |b| \\
+\end{tabular*}
+Mittel (\(\forall j: a_j \geq 0, n \in \nset{N}\))
+\begin{align*}
+\begin{array}{*3{>{\displaystyle}l}}
+  \texttt{HM } &\leq \texttt{ GM } &\leq \texttt{ AM} \\
+  \left[ \frac{1}{n}\sum_{j=1}^n\frac{1}{a_j}\right]^{-1}
+  &\leq
+  \sqrt[n]{\prod_{j=1}^n a_j}
+  &\leq
+  \frac{1}{n}\sum_{j=1}^{n} a_j
+\end{array}
+\end{align*}
+Integral
+\begin{align*}
+  \left| \int_a^b f(x) \;\dd{x} \right| \leq \int_a^b |f(x)| \;\dd{x}
+\end{align*}
+
+\section{Zahlenfolgen und Reihen}
+\subsection{Konvergenz \brpage{679}}
+\textbf{Hinweise:} Induktion, Einschlie{\ss}ungsprinzip, Bolzano-Weierstrass.
+\begin{align*}
+  \exists g \in \nset{R} : g = \lim_{n\to\infty} \langle f_n \rangle
+  \iff \langle f_n \rangle \text{ konvergiert}
+\end{align*}
+
+\subsection{Divergenz \brpage{472}}
+Divergent hei{\ss}t nicht konvergent:
+\begin{align*}
+  \lim_{n\to\infty} \langle f_n \rangle = \pm\infty
+  &\implies \langle f_n \rangle \text{ divergiert \emph{bestimmt}} \\
+  \nexists \lim_{n\to\infty} \langle f_n \rangle
+  &\implies \langle f_n \rangle \text{ divergiert}
+\end{align*}
+
+\subsection{Binomischer Satz \brpage{12}}
+\begin{align*}
+  (a+b)^n &= \sum_{k=0}^n \binom{n}{k} a^{n-k} b^k
+  &
+  \binom{n}{k} &= \frac{n!}{k!(n-k)!}
+\end{align*}
+
+\subsection{Folgen \brpage{470}}
+\begin{center}
+  \begin{tabular}{l >{\(}l<{\)} >{\(}l<{\)}}
+    Arithmetisch & a_{n+1} = a_n + d & d = a_{n+1} - a_n \\
+    Geometrisch  & a_{n+1} = q a_n   & q = a_{n+1} / a_n \\
+  \end{tabular}
+\end{center}
+\begin{center}
+  Monotonie der Folge
+  \begin{tabular}{*3{>{\(}l<{\)}}}
+    \midrule
+    d    > 0 & q    > 1 &\implies \langle a_n\rangle\Uparrow \\
+    d \geq 0 & q \geq 1 &\implies \langle a_n\rangle\uparrow \\
+    d    < 0 & q \in (0;1) &\implies \langle a_n\rangle\Downarrow \\
+    d \leq 0 & q \in (0;1] &\implies \langle a_n\rangle\downarrow \\
+  \end{tabular}
+\end{center}
+
+\subsection{Reihen \brpage{20,477,1075}}
+\begin{align*}
+  \sum_{k=1}^n k   &= \frac{n(n+1)}{2} &
+  \sum_{k=1}^n k^2 &= \frac{n(n+1)(2n+1)}{6} \\
+  \sum_{k=1}^n k^3 &= \frac{n^2(n+1)^2}{4} &
+  \sum_{k=0}^{n-1} ar^k &= a\left(\frac{1-r^n}{1-r}\right) (r \neq 1)
+\end{align*}
+
+\section{Funktionen \brpage{49}}
+\[
+f : \mathbb{D}_f \to \mathbb{W}_f \quad x \mapsto f(x)
+\]
+
+\subsection{Lineare Transformationen}
+Seien \(\mu,\lambda,\ell,o \geq 0\).
+Mit \(< 0\) werte Streckungen sind Spiegelungen und Verschiebungen sind in Gegenrichtung.
+\[
+\mathfrak{T}\{f\} = \mu f(\lambda x + \ell) + o
+\]
+Wobei
+\(\mu = y\)-Streckung,
+\(\lambda = x\)-Streckung,
+\(\ell = \) Verschiebung nach links,
+\(o = \) Verschiebung nach oben.
+
+\subsection{Monotonie \brpage{51,453}}
+\begin{center}
+  \begin{tabular}{>{\(}c<{\)} l >{\(}l<{\)}}
+    \text{Zeichen} & \text{Bedeutung} & \text{Bedingung } (\forall\varepsilon > 0) \\
+    \midrule
+    f \Uparrow   & \text{streng wachsend} & f(x) < f(x + \varepsilon) \\
+    f \uparrow   & \text{wachsend}        & f(x) \leq f(x + \varepsilon) \\
+    f \Downarrow & \text{streng fallend}  & f(x) > f(x + \varepsilon) \\
+    f \downarrow & \text{fallend}         & f(x) \geq f(x + \varepsilon) \\
+  \end{tabular} \\
+\end{center}
+\begin{center}
+  \begin{tabular}{*3{>{\(}c<{\)}}}
+    \text{Monotonie} & f'' \neq 0 & f^{(n)} \neq 0 \text{ und } n \text{ gerade} \\
+    \midrule
+    f \Uparrow   & f' > 0    & f^{(n-1)} > 0    \\
+    f \uparrow   & f' \geq 0 & f^{(n-1)} \geq 0 \\
+    f \Downarrow & f' < 0    & f^{(n-1)} < 0    \\
+    f \downarrow & f' \leq 0 & f^{(n-1)} \leq 0 \\
+  \end{tabular}
+\end{center}
+\footnotesize{NB: Gilt auch f\"ur Zahlenfolgen (\(f(x) \leadsto f_n, f(x+\varepsilon) \leadsto f_{n+1}\))
+
+\subsection{Symmetrien \brpage{52}}
+\begin{center}
+  \resizebox{\linewidth}{!}{%
+    \begin{tabular}{l >{\(}r<{\)} @{\(\;=\;\)} >{\(}l<{\)} l}
+      \(f\)& \multicolumn{2}{l}{\text{Bedingung}} & Bedeutung \\
+      \midrule
+      gerade     & f(-x)  & f(x)     & \(y\)-Symmetrisch \\
+      ungerade   & f(-x) & -f(x)     & Nullpunkt-Symmetrisch \\
+      periodisch & f(x)  & f(x\pm p) & \(p \in \nset{R}\)
+    \end{tabular}
+  }
+\end{center}
+
+\subsection{Beschranktheit \brpage{52,676}}
+Eine funktion hei{\ss}t nach unten oder oben beschr\"ankt, wenn ihre Werte nicht gr\"o{\ss}er oder kleiner als eine eine bestimmte Zahl \(K\) bzw. \(k\) sind.
+\(f\) ist beschr\"ankt wenn \(\exists \sup f \wedge \exists \inf f \iff \forall x: k < f(x) < K\).
+\begin{align*}
+  K = \sup f &\iff \exists K \in \nset{R} : \forall x : f(x) < K \\
+  k = \inf f &\iff \exists k \in \nset{R} : \forall x : f(x) > k
+\end{align*}
+
+\subsection{Stetigkeit \brpage{60}}
+Eine funktion hei{\ss}t \emph{stetig} wenn:
+\begin{align*}
+  \forall x \in \mathbb{D}_f : \lim_{u^{-} \to x} f(u) = \lim_{u^{+} \to x} f(u) = f(x)
+\end{align*}
+
+\subsection{Nullstellen \brpage{40,47,48}}
+\subsection{Extremstellen \brpage{455}}
+\subsection{Wendepunkte \brpage{256}}
+\subsection{Konvexit\"at \brpage{253}}
+Auch als Kr\"ummungsverhalten bekannt. Sei \(P = (x,f(x))\) und kein Wendepunkt,
+d.h. \(f''(x) \neq 0\).
+\begin{align*}
+  f''(x) > 0 & \implies \text{ nach oben konkav, streng konvex} \\
+  f''(x) < 0 & \implies \text{ nach unten konkav, streng konkav}
+\end{align*}
+
+\subsection{Wendepunkte \brpage{256}}
+
+\subsection{Asymptoten \brpage{260}}
+Sei \(a(x) = kx + b\) die allgemeine Asymptot von \(f(x)\), d.h.
+\(\lim_{x\to\infty} f(x) - a(x) = 0\). Dann
+\begin{align*}
+  k &= \lim_{x\to\infty}\frac{f(x)}{x} \heq \lim_{x\to\infty} f'(x)
+  & b &= \lim_{x\to\infty}\left( f(x) - kx \right)
+\end{align*}
+
+\subsection{Umkehrfunktion \brpage{53}}
+Umkehrbarkeit Bedingungen:
+\begin{align*}
+  f^{-1} : \mathbb{W}_f \to \mathbb{D}_f \quad f(x) \mapsto x \\
+  \exists f^{-1} \iff (f\Downarrow)\vee(f\Uparrow)
+\end{align*}
+
+\subsection{Polynomen \brpage{65}}
+\begin{align*}
+P_n(x) = \sum_{i=0}^n a_i x^i = \prod_{i=1}^n (x-r_i)
+\end{align*}
+Nullstellen \brpage{40} (Wurzeln) \(r_i\) k\"onnen mithilfe von Faktorisierung,
+der Quadratische Formel \(r = \frac{1}{2a}(-b \pm \sqrt{b^2 - 4ac}) \)
+oder dem Hornerschema \brpage{966} gel\"ost werden.
+\begin{align*}
+  P_n(x) = (x - u) P_{n-1}(x) + P_n(u)
+\end{align*}
+Seien \(a_i\) die Koeffizienten von \(P_n(x)\), \(b_i\) von \(P_{n-1}(x)\) und \(u \in \mathbb{D}_P\).
+Wenn \(P_n(u) = 0\), dann ist \(u = r\) d.h. eine Nullstelle.
+\begin{center}
+  \begin{tabular}{>{\(}c<{\)} | >{\(}c<{\)} >{\(}c<{\)} >{\(}c<{\)} >{\(}c<{\)} | >{\(}c<{\)} c}
+      & a_n    & a_{n-1}   & \cdots & a_1   & a_0 & \multirow{2}{*}{+} \\
+    \times u &        & u b_{n-1} & \cdots & u b_1 & u b_0 \\
+    \midrule
+      & b_{n-1} & b_{n-2}   & \cdots & b_0   & P_n(u) \\
+  \end{tabular}
+\end{center}
+
+\subsection{Gebrochene Funktionen \brpage{14}}
+\begin{align*}
+R(x) = \frac{P_m(x)}{Q_n(x)} = \frac{p_m x^m + \cdots + p_0}{q_n x^n + \cdots + q_0}
+\end{align*}
+
+\subsubsection{Partialbruchzerlegung \brpage{15}}
+
+\subsection{Trigonometrische \brpage{77,80,147,165}}
+\begin{center}
+    \begin{tikzpicture}[scale=4]
+      \draw[gray,dashed] (0,0) --
+      node[pos=.7, sloped, above] {\(0\)}
+      node[pos=1, anchor=west, sloped] {\(\left(1,0,0\right)\)}
+      (1.1,0);
+
+      \draw[gray,dashed] (0,0) --
+      node[pos=.7, sloped, above] {\(\pi/2\)}
+      node[pos=1, anchor=west, sloped] {\(\left(0,1,\infty\right)\)}
+      (0,1.1);
+
+      \draw[gray,dashed] (0,0) --
+      node[pos=.7, sloped, above] {\(\pi/12\)}
+      node[pos=1, anchor=west, sloped] {\(\left(\frac{1+ \sqrt3}{2\sqrt 2},\frac{\sqrt3 -1}{2\sqrt 2}\right)\)}
+      ({1.1 *cos(15)}, {1.1 * sin(15)});
+
+      \draw[gray,dashed] (0,0) --
+      node[pos=.7, sloped, above] {\(\pi/8\)}
+      node[pos=1, anchor=west, sloped] {\(\scriptscriptstyle\left(\frac{\sqrt{2 + \sqrt{2}}}{2},\frac{\sqrt{2-\sqrt{2}}}{2}\right)\)}
+      ({1.1 *cos(pi/8 r)}, {1.1 * sin(pi/8 r)});
+
+      \draw[dashed] (0,0) --
+      node[pos=.7, sloped, above] {\(\pi/6\)}
+      node[pos=1, anchor=west, sloped] {\(\left(\frac{\sqrt 3}{2},\frac{1}{2},\frac{\sqrt3}{3}\right)\)}
+      ({1.1 *cos(30)}, {1.1 * sin(30)});
+
+      \draw[dashed] (0,0) --
+      node[pos=.7, sloped, above] {\(\pi/4\)}
+      node[pos=1, anchor=west, sloped] {\(\left(\frac{\sqrt 2}{2},\frac{\sqrt 2}{2}, 1\right)\)}
+      ({1.1 *cos(45)}, {1.1 * sin(45)});
+
+      \draw[dashed] (0,0) --
+      node[pos=.7, sloped, above] {\(\pi/3\)}
+      node[pos=1, anchor=west, sloped] {\(\left(\frac{1}{2},\frac{\sqrt 3}{2},\sqrt{3}\right)\)}
+      ({1.1 *cos(60)}, {1.1 * sin(60)});
+
+      \draw[black, thick] ({cos(-5)}, {sin(-5)}) arc (-5:100:1);
+    \end{tikzpicture}
+\end{center}
+Definitionen der grunds\"atzlichen Winkelfunktionen.
+\begin{align*}
+  \sin(x)  &= \frac{e^{ix} - e^{-ix}}{2i} = \sum_{n=0}^\infty (-1)^n \frac{x^{(2n+1)}}{(2n+1)!} \\
+  \cos(x)  &= \frac{e^{ix} + e^{ix}}{2} = \sum_{n=0}^\infty (-1)^n \frac{x^{2n}}{(2n)!}\\
+  \sinh(x) &= \frac{e^{x} - e^{-x}}{2} = \sum_{n=0}^\infty \frac{x^{(2n+1)}}{(2n+1)!} \\
+  \cosh(x) &= \frac{e^{x} + e^{x}}{2} = \sum_{n=0}^\infty \frac{x^{2n}}{(2n)!}\\
+\end{align*}
+Beziehungen und Identit\"aten.
+\[
+\cos^2(x) + \sin^2(x) = 1 \quad \cosh^2(x) - \sinh^2(x) = 1
+\]
+
+\begin{center}
+  \begin{tabular}{>{\(}l<{\)} @{\(\;=\;\)} >{\(}r<{\)}   >{\(}l<{\)} @{\(\;=\;\)} >{\(}r<{\)} }
+    \toprule
+    \cos(\alpha + 2\pi) & \cos(\alpha) & \sin(\alpha + 2\pi) & \sin(\alpha) \\
+    \cos(-\alpha)                & \cos(\alpha)  & \sin(-\alpha)                & -\sin(\alpha) \\
+    \cos(\pi - \alpha)           & -\cos(\alpha) & \sin(\pi - \alpha)           & \sin(\alpha)  \\
+    \cos(\frac{\pi}{2} - \alpha) & \sin(\alpha)  & \sin(\frac{\pi}{2} - \alpha) & \cos(\alpha) \\
+    \midrule
+    \cos(\alpha + \beta) & \multicolumn{3}{l}{\(\cos\alpha\cos\beta - \sin\alpha\sin\beta\)} \\
+    \sin(\alpha + \beta) & \multicolumn{3}{l}{\(\sin\alpha\cos\beta - \cos\alpha\sin\beta\)} \\
+    \midrule
+    \cos(2\alpha) & \multicolumn{3}{l}{\(\cos^2{\alpha} - \sin^2{\alpha} \)} \\
+                  & \multicolumn{3}{l}{\(1 - 2\sin^2\alpha\)} \\
+                  & \multicolumn{3}{l}{\(2\cos^2\alpha - 1\)} \\
+    \sin(2\alpha) & \multicolumn{3}{l}{\(2\sin\alpha\cos\alpha\)} \\
+    \tan(2\alpha) & \multicolumn{3}{l}{\((2\tan\alpha)(1 + \tan^2\alpha)^{-1}\)} \\
+    \bottomrule
+  \end{tabular}
+\end{center}
+
+\section{Grenzwert \brpage{55}}
+Bedingungen f\"ur die Existenz einer Grenzwert:
+\begin{align*}
+  \exists \lim_{x\to a} f(x) = g \iff \lim_{x\to a^-} f(x) = \lim_{x\to a^+} f(x)
+\end{align*}
+Formell lautet der \(\delta - \varepsilon\) Kriterium:
+\begin{align*}
+  \lim_{x\to a}f(x) \iff \forall \varepsilon > 0: \exists a: |f(a) - g| < \varepsilon
+\end{align*}
+
+
+\subsection{Unbestimmte Formen}
+\begin{align*}
+\frac{0}{0},\; \frac{\infty}{\infty},\; 0\cdot\infty,\; \infty - \infty,\; 0^0,\; \infty^0,\; 1^\infty
+\end{align*}
+
+\subsection{Enschlie{\ss}ungsprinzip \brpage{56}}
+Auch als ``Sandwitch'' bekannt.
+\(\forall x : a(x) \leq f(x) \leq b(x)\)
+\begin{align*}
+  \exists \left(\lim_{x\to\pm\infty} a(x) = \lim_{x\to\pm\infty} b(x) = g\right)
+  \implies
+  \lim_{x\to\pm\infty} f(x) = g
+\end{align*}
+\footnotesize{NB: gilt auch f\"ur folgen \(a_n, b_n, f_n\)}
+
+\subsection{Bolzano-Weierstrass \brpage{701}}
+\begin{align*}
+  \begin{rcases}
+    \exists \sup f \wedge f\Uparrow \\
+    \exists \inf f \wedge f\Downarrow
+  \end{rcases}
+  \implies f \text{ konvergiert}
+\end{align*}
+
+\subsection{Bemerkenswerte Grenzwerte}
+\begin{align*}
+  \setlength\extrarowheight{8pt}
+  \begin{array}{*2{>{\displaystyle}l}}
+    \lim_{x\to 0} \frac{\sin x}{x} = 1 & \lim_{x\to\infty} \left(1 + \frac{a}{x}\right)^x = e^a \\
+    \lim_{x\to 0} \frac{a^x - 1}{x} = \ln a & \lim_{x\to\infty} \frac{(\ln x)^a}{x^b} = 0 \\
+    \lim_{x\to 0} \frac{e^x - 1}{2} = 1 & \lim_{x\to\infty} \sqrt[x]{p} = 1\\
+    \lim_{x\to 0} x\ln x = 0 & \lim_{x\to\infty} \sum_{k=0}^x q^k = \frac{1}{1-q} \quad (|q| < 1)\\
+  \end{array}
+\end{align*}
+
+\subsection{Bernoulli-l'H\^opitalsche Regel \brpage{57}}
+Wenn \(f(x)/g(x) \to \pm\infty/\pm\infty\) oder \(f/g \to 0/0\) dann gilt:
+\begin{align*}
+  \lim_{x\to a} \frac{f(x)}{g(x)} \heq \lim_{x\to a} \frac{f'(x)}{g'(x)}
+\end{align*}
+\textbf{Hinweise:}
+\begin{align*}
+  \varphi\psi &= \frac{\varphi}{\psi^{-1}} = \frac{\psi}{\varphi^{-1}}
+  & 0\cdot\infty &\leadsto \frac{0}{0}, \frac{\infty}{\infty} \\
+  \varphi - \psi &= \frac{\psi^{-1} - \varphi^{-1}}{(\varphi\psi)^{-1}}
+  & \infty - \infty &\leadsto \frac{0}{0} \\
+  \varphi^\psi &= e^{\psi\ln\varphi} & (\varphi > 0)
+\end{align*}
+
+\section{Differentialrechnung \brpage{444,446}}
+\begin{align*}
+  f'(x) = \df{f}{x} = D_x f = \lim_{h\to 0} \frac{f(x+h) - f(x)}{h}
+\end{align*}
+
+\subsection{Differenzierbarkeit \brpage{444,445}}
+Beide \(f'_+ \text{ und } f'_-\) mussen existieren und gleich sein.
+\begin{align*}
+  \lim_{h\to 0^+} \frac{f(x+h) - f(x)}{h} = f'_+ \noticeq \lim_{h\to 0^-} \frac{f(x+h) - f(x)}{h} = f'_-
+\end{align*}
+
+\subsection{Ableitungsregeln \brpage{445,450}}
+\begin{alignat*}{3}
+  (af) &= af' &\quad&& (u(v(x)))' &= u'(v)v' \\
+  (uv)' &= u'v + uv' &\quad&& \left(\frac{u}{v}\right)' &= \frac{u'v-uv'}{v^2} \\
+  \left(\sum u_i\right)' &= \sum u'_i &\quad&& (\ln u)' &= \frac{u'}{u} \\
+  (f^{-1})' &= \frac{1}{f'(f^{-1}(x))}
+\end{alignat*}
+
+\subsection{Tangente und Normale Funktion}
+Zur Funktion \(f(x)\) im Punkt \((p_x, p_y) = (z, f(z))\)
+\begin{align*}
+  t(x) &= f'(p_x)(x - p_x) + p_y &
+  n(x) &= \frac{p_x - x}{f'(p_x)} + p_y
+\end{align*}
+
+\subsection{Schnittwinkel}
+Der Schnittpunkt \(S = (z,f(z)) = (z,g(z))\) findet man mit \(f(z) = g(z)\). Der Schnittwinkel ist dann
+\begin{align*}
+  \tan\vartheta = \frac{g'(z) - f'(z)}{1 + f'(z)g'(z)}
+\end{align*}
+
+\subsection{Mittlewertsatz (der DR) \brpage{454}}
+\begin{align*}
+  f'(\xi) = \frac{f(b) - f(a)}{b-a} \qquad (\xi \in (a;b))
+\end{align*}
+
+\subsection{Taylor Polynom und Reihe \brpage{484}}
+Der Taylor-Polynom approximiert eine Funktion um einen Entwicklungspunkt \(a\).
+\begin{align*}
+  T_n(x, a) &= \sum_{k=0}^n\frac{f^{(k)}(a)}{k!}(x-a)^k + R_n\\
+  &= f(a) + \frac{f'(a)}{1!}(x-a)^1 + \frac{f''(a)}{2!}(x-a)^2 + \cdots
+\end{align*}
+Die Restgliede sind
+\begin{align*}
+  R_n = \frac{f^{(n+1)}(\xi)}{(n+1)!} (x-a)^{(n+1)} \qquad (\xi \in (x;a))
+\end{align*}
+Wenn \(\lim_{n\to\infty}R_n = 0\) dann \(f(x) \noticeq T(x,a)\), d.h. die Taylor Rehie zu \(f\) identisch ist. Sonst berechnet man der \emph{worst case} Fehler \(\epsilon \geq |R_n|\) und der dazugeh\"orig \(\hat{\xi} = \underset{\xi}{\arg}\max|R_n|\):
+\begin{align*}
+  \epsilon
+  = \max |R_n|
+  = \max \left[\frac{|f^{(n+1)}(\xi)|}{(n+1)!} |x-a|^{(n+1)}\right]
+\end{align*}
+
+\subsection{Fehlerrechnung \brpage{862,866} und Fortpflanzung \brpage{869}}
+Sei \(\mathbf{y}\) eine direkte Messerung von eine Funktion \(y\) von \(x\). Ist dann \(\Delta y\) der \emph{absolute} Fehler und \(\delta y\) der \emph{relative} Fehler.
+\begin{align*}
+  \mathbf{y} = y \pm \Delta y = y(1 \pm \delta y)
+\end{align*}
+Der Messerungsfehler kann mithilfe von einer lineare Approximation fortgepflanzt werden.
+\begin{align*}
+  \lim_{\Delta x\to 0} \frac{\Delta y}{\Delta x} \noticeq \df{y}{x}
+  \implies &\Delta y \approx y'\Delta x \\
+  & \delta y = \frac{\Delta y}{y} \approx \frac{y'\Delta x}{y}
+  = k\delta x
+\end{align*}
+
+\section{Integralrechnung \brpage{493}}
+\subsection{Riemann Itegrierbarkeit \brpage{507}}
+Sei \(f \text{ in } [a;b]\) stetig, \(x_0 = a, \dots, x_n = b\) und \(\xi_i \in [x_{i-1};x_{i}]\).
+\begin{align*}
+  \int_b^a f(x) \;\dd{x} = \mathfrak{Ri}\{f\}
+  = \lim_{\substack{n\to\infty\\ \Delta x_i\to0 }}
+  \sum_{i=1}^n f(\xi_i) \underbrace{(x_i - x_{i-1})}_{\Delta x_i}
+\end{align*}
+Bedingungen f\"ur \(f\): stetig oder monoton oder beschr\"ankt und an h\"ochstens endlich vielen Stellen unstetig.
+
+\subsection{Aufwendungen}
+\begin{align*}
+  \text{Fl\"acheninhalt} && A &= \int_a^b |f(x)| \;\dd{x} \\
+  \text{Bogenl\"ange} && \ell &= \int_a^b \sqrt{1 + (f'(x))^2} \;\dd{x}
+\end{align*}
+
+\subsection{Bestimmte Integral \brpage{509}}
+\begin{align*}
+  \int_a^b f(t)\;\dd{t} &= F(b) - F(a) \\
+  \int_a^b f(t)\;\dd{t} &= \int_a^0 f(t)\;\dd{t} + \int_0^b f(t)\;\dd{t}
+\end{align*}
+
+\subsection{Mittlewertsatzt \brpage{510}}
+Sei \(f(x)\) in \([a;b]\) stetig, dann \(\exists \xi \in (a;b) : f(\xi) = \mu\) (Mittelwert).
+\begin{align*}
+  \frac{1}{b-a}\int_a^b f(t) \;\dd{t} = f(\xi) = \mu \qquad (\xi\in (a,b))
+\end{align*}
+
+\subsection{Differenzierbarkeit \brpage{509}}
+\begin{align*}
+  \df{}{x} \int f(t) \;\dd{t} &= f(x) \\
+  \df{}{x} \int_{a(x)}^{b(x)} f(t) \;\dd{t} &= f(b(x)) b'(x) - f(a(x))a'(x)
+\end{align*}
+
+\section*{License}
+{ \tt
+An1E-ZF (c) by Naoki Pross
+\\\\
+An1E-ZF is licensed under a Creative Commons Attribution-ShareAlike 4.0 Unported License.
+\\\\
+You should have received a copy of the license along with this work. If not, see 
+\\\\
+\url{http://creativecommons.org/licenses/by-sa/4.0/}
+}
+
+\end{document}
