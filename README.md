@@ -1,7 +1,7 @@
 An1E Zusammenfassung
 ====================
 
-Zusammenfassung der Vorlesung Analysis 2 fuer Elektrotechnik, Fruehlingsemeter 2020 von Dr. Zgraggen.
+Zusammenfassung der Vorlesung Analysis 2 fuer Elektrotechnik, Herbstsemester 2019 von Dr. Zgraggen.
 
 Inhalt
 ------
