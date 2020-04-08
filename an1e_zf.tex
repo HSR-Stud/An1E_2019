@@ -43,11 +43,17 @@
 \begin{document}
 
 \section{Ungleichungen \brpage{31}}
-\begin{tabular*}{\linewidth}{l >{\(}r<{\) } @{{\(\;\leq\;\)}} >{ \(}l<{\)}}
+\begin{center}
+\begin{tabular}{l >{\(}r<{\) } @{{\(\;\leq\;\)}} >{ \(}l<{\)}}
+  \toprule
   Bernoulli  & 1 + na  & (1+a)^n \\
   Binomische & |ab|    & \frac{1}{2}(a^2 + b^2) \\
   Dreiecks   & |a + b| & |a| + |b| \\
-\end{tabular*}
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\noindent
 Mittel (\(\forall j: a_j \geq 0, n \in \nset{N}\))
 \begin{align*}
 \begin{array}{*3{>{\displaystyle}l}}
@@ -121,7 +127,7 @@ f : \mathbb{D}_f \to \mathbb{W}_f \quad x \mapsto f(x)
 
 \subsection{Lineare Transformationen}
 Seien \(\mu,\lambda,\ell,o \geq 0\).
-Mit \(< 0\) werte Streckungen sind Spiegelungen und Verschiebungen sind in Gegenrichtung.
+Mit \(< 0\) Werte: Streckungen sind Spiegelungen und Verschiebungen sind in Gegenrichtung.
 \[
 \mathfrak{T}\{f\} = \mu f(\lambda x + \ell) + o
 \]
@@ -162,7 +168,7 @@ Wobei
       \midrule
       gerade     & f(-x)  & f(x)     & \(y\)-Symmetrisch \\
       ungerade   & f(-x) & -f(x)     & Nullpunkt-Symmetrisch \\
-      periodisch & f(x)  & f(x\pm p) & \(p \in \nset{R}\)
+      periodisch & f(x)  & f(x\pm p) & Period \(p \in \mathbb{D}_f\)
     \end{tabular}
   }
 \end{center}
@@ -361,6 +367,7 @@ Wenn \(f(x)/g(x) \to \pm\infty/\pm\infty\) oder \(f/g \to 0/0\) dann gilt:
 \begin{align*}
   \lim_{x\to a} \frac{f(x)}{g(x)} \heq \lim_{x\to a} \frac{f'(x)}{g'(x)}
 \end{align*}
+% \textbf{Achtung:} Manchmal existiert \(\lim_{x\to a} f'/g'\) nicht!
 \textbf{Hinweise:}
 \begin{align*}
   \varphi\psi &= \frac{\varphi}{\psi^{-1}} = \frac{\psi}{\varphi^{-1}}
@@ -383,7 +390,7 @@ Beide \(f'_+ \text{ und } f'_-\) mussen existieren und gleich sein.
 
 \subsection{Ableitungsregeln \brpage{445,450}}
 \begin{alignat*}{3}
-  (af) &= af' &\quad&& (u(v(x)))' &= u'(v)v' \\
+  (af)' &= af' &\quad&& (u(v(x)))' &= u'(v)v' \\
   (uv)' &= u'v + uv' &\quad&& \left(\frac{u}{v}\right)' &= \frac{u'v-uv'}{v^2} \\
   \left(\sum u_i\right)' &= \sum u'_i &\quad&& (\ln u)' &= \frac{u'}{u} \\
   (f^{-1})' &= \frac{1}{f'(f^{-1}(x))}
@@ -473,8 +480,19 @@ Sei \(f(x)\) in \([a;b]\) stetig, dann \(\exists \xi \in (a;b) : f(\xi) = \mu\) 
 
 \vfill
 
+\begin{thebibliography}{1}
+  \bibitem{hsr}
+    \texttt{An1E} Vorlesungen an der Hochschule f\"ur Technik Rapperswil und der dazugehoerige Skript,
+    \textit{Dr. Bernhard Zgraggen}, Herbstsemester 2019
+  \bibitem{bronstein}
+    Taschenbuch der Mathematik,
+    10. \"uberarbeitete Auflage, 2016 (1977),
+    \textit{Bronstein, Semendjajew, Musiol, M\"uhlig}, 
+    \texttt{ISBN 978-3-8085-5789-1}
+\end{thebibliography}
+
 \section*{Notation}
-Rot markierte Zahlen wie zB \brpage{477} sind Hinweise auf die Seiten in der ``Taschenbuch der Mathematik, 10. \"uberarbeitete Auflage''. \texttt{ISBN 978-3-8085-5789-1}
+Rot markierte Zahlen wie zB \brpage{477} sind Hinweise auf die Seiten in der ``Bronstein'': ``Taschenbuch der Mathematik, 10. \"uberarbeitete Auflage''. \texttt{ISBN 978-3-8085-5789-1}
 
 \section*{License}
 { \tt
