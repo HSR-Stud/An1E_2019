@@ -12,7 +12,7 @@ Inhalt
 - Fehlerrechnung und Fortpflanzung
 - Integralrechnung (Intro)
 
-License (CC-SA)
+License (CC BY-SA)
 ---------------
 ```
 An1E-ZF (c) by Naoki Pross
